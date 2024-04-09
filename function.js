@@ -119,24 +119,31 @@ function showWord(words){
     currentWord.innerHTML = words[randIndex];
 }
 
-// countdown timer
-function countdown(){
-//make sure time is not run out
-if (time>0){
-    //Decrement
-    time--;
-}else if(time===0){
-    //Game is over
-    isPlaying=false;
+/// Countdown timer
+function countdown() {
+    // Make sure time is not run out
+    if (time > 0) {
+        // Decrement time
+        time--;
+    } else if (time === 0) {
+        // Game is over, stop playing
+        isPlaying = false;
+        // Reset time
+        time = currentLevel; // Reset to the currentLevel value
+        // Show time
+        timeDisplay.innerHTML = time;
+        // Show a new word
+        showWord(words);
+    }
+    // Show time
+    timeDisplay.innerHTML = time;
 }
-//Show time
-  timeDisplay.innerHTML = time;
-}
+
 
 // Check game status
 function checkStatus(){
     if(!isPlaying && time===0){
         message.innerHTML='Game is Over!!!';
-        score = 0;
+        score = -1;
     }
 }
